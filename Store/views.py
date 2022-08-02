@@ -1,7 +1,8 @@
-from  django.shortcuts import render
+from unicodedata import category
+from django.shortcuts import render
 from django.http import HttpResponse
-from Store.models import Departamento,Categoria,
-from Store.models import Produtos
+from Store.models import Categoria,Departamento,Categoria,Produto
+from Store.models import Produto
 
 # Create your views here.
 def index(request):
@@ -23,14 +24,14 @@ def Departamentos(request):
     context = {'departamentos': depto}   
     return render( request,'departamentos.html',context)
 
-def Categorias(request):
-    list_categorias =  Categoria.objects.all() 
-    context = {'categorias': list_categorias}   
+def Categorias(request,id):
+    lista_categorias =  Categoria.objects.filter(departamento_id =id ) 
+    context = {'categorias': lista_categorias}   
     return render( request,'categorias.html',context)    
     
-def Produtos(request):
-    lista_produtos = Produtos.objects.all() 
-    context = {'produtos':list_produtos}   
+def Produtos(request,id):
+    lista_produtos = Produto.objects.filter (categoria_id = id) 
+    context = {'produtos': lista_produtos}   
     return render( request,'produtos.html',context)
     
    

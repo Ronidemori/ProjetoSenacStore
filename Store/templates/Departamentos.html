@@ -1,4 +1,4 @@
-!DOCTYPE html>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -10,8 +10,9 @@
     <h1>Senac Store</h1>
     <ul>
         {% for depto in departamentos %}
-        <li> {{ depto.nome}}</li>
-        {% endflor %}
+        <li> <a href = "/categorias/{{ depto.id }}"> {{ depto.nome}}</a></li>
+        {% endfor %}
+
        
     </ul>      
     
