@@ -9,28 +9,12 @@
     <link rel ='stylsheet'type= 'text/css'href='{% static 'css/estilos.css'%}'
 </head>
 <body>
-       <table border="1">
-        <tr>
-            <td> Nome </td>
-            <td> Categoria </td>
-            <td> Preço </td>
-            <td> Estoque </td>
-            <td> Imagem </td>
-            {% for prod in produtos%}
-        </tr>
-        <tr>
-            <td> {{prod.nome}}</td>
-            <td> {{ prod.categoria }}</td>
-            <td> {{prod.preco}} </td>
-            <td> {{prod.estoque}} </td>
-            <td> <img src = "{{ prod.imagem.url"}}' width = "80"> </td>
-            {% if prod.lancamento == true %}
-            Lançamento !!!!
-            {% endif%}
-        </td>
-        <tr>
-                   
-    </table>
+    {% include "includes/topo.html" %}
+    <h1> Sobre a Empresa </h1>
+
+    {%loren %}
+
+       
       
 </body>
 </html>
