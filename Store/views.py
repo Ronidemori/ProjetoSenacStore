@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from Store.models import Categoria,Departamento,Categoria,Produto
 from Store.models import Produto
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -53,6 +54,26 @@ def institucional (request):
     
 def contato (request):
     return render(request,"contato.html")
+
+def enviar_email(request):
+  nome=request.POST [' nome']
+  telefone = request.POST ['telefone']
+  assunto = request.POST ['assunto']
+  mensagem = request.POST [mensagem],
+
+  remetente = request.POST ['email']
+  destinatario = ['ronidemori@gmail.com']
+
+  corpo = f"Nome : {nome}\n\Telefone:{telefone}\n Mensagem:{mensagem}"
+  try:
+       send_mail ( assunto, corpo, remetente, destinatario)
+       context = {'msg': 'E-mail enviado com sucesso!'}
+  except:
+       context = {'msg': 'Erro ao enviar o e-mail !'}
+  return render (request, 'contato.html',context)     
+
+    
+
    
 
 
